@@ -1,0 +1,17 @@
+  - name: Install MySQL 5.7 repo
+    yum: name=http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm state=present
+
+  - name: Install MySQL 5.7
+    yum: 
+     pkg={{ item }}
+     state=present
+     skip_broken=yes
+    with_items:
+    - mysql
+    - mysql-server
+   
+  
+  - name: Start the MySQL service
+    service: name=mysqld state=started enabled=true
+
+ 

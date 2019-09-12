@@ -1,0 +1,12 @@
+---
+# tasks file for key
+-   name: Create an EC2 key
+    ec2_key:
+        name: "jms-key-3"
+        region: ap-south-1	
+    register: ec2_key
+
+-   name: save private key
+    copy: content="{{ ec2_key.key.private_key }}" dest="./jms-key-3.pem" mode=0600
+    when: ec2_key.changed
+ 

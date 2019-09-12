@@ -1,0 +1,20 @@
+---
+# tasks file for dynamicinventory
+-  name: Create an EC2 instance
+   ec2:
+    key_name: emexo
+    instance_type: t2.micro
+    image: ami-02913db388613c3e1
+    wait: yes
+    group: launch-wizard-13
+    count: 1
+    vpc_subnet_id: subnet-f2efb59a
+    assign_public_ip: yes
+    region: ap-south-1
+   register: ec2
+-  name: save IP to inventory file
+   copy: content="[webservers]{{'n'}}{{ item.public_ip }}" dest=./db
+   with_items: "{{ ec2.instances }}"
+-   name: Add IP to ec2_hosts group
+    add_host: hostname={{ item.public_ip }} groups=ec2-group
+    with_items: "{{ ec2.instances }}"

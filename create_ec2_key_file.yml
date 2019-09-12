@@ -1,0 +1,8 @@
+-   name: Create AWS instance
+    hosts: 172.31.40.23
+    connection: local
+    gather_facts: False
+    remote_user: ec2-user
+    roles:
+        - key
+

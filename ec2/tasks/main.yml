@@ -1,0 +1,12 @@
+---
+# tasks file for ec2
+- ec2:
+    key_name: emexo
+    instance_type: t2.micro
+    image: ami-02913db388613c3e1
+    wait: yes
+    group: launch-wizard-13
+    count: 1
+    vpc_subnet_id: subnet-f2efb59a
+    assign_public_ip: yes
+    region: ap-south-1	

@@ -1,0 +1,9 @@
+---
+- name: create ec2 instance
+  hosts: 172.31.40.23
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  roles:
+     - dynamicinventory1
+

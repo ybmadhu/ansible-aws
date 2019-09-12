@@ -1,0 +1,8 @@
+---
+- name: Install MySQL database server
+  hosts: 172.31.41.91
+  become: yes
+  become_method: sudo
+  gather_facts: true
+  roles:
+   - mysql
