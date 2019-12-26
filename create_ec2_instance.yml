@@ -1,7 +1,7 @@
 ---
 - name: create ec2 instance
   hosts: 172.31.40.23
-  become: yes
+  become: false
   become_method: sudo
   gather_facts: true
   roles:
